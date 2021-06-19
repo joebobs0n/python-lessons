@@ -1,0 +1,32 @@
+body {
+    font-size: var(--vscode-markdown-font-size, 12px);
+	line-height: var(--vscode-markdown-line-height, 18px);
+}
+
+code {
+    background-color: rgba(35, 36, 31, 0.8);
+    border-radius: 0.25em;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+	padding-top: 0.1em;
+	padding-bottom: 0.1em;
+}
+
+.hljs {
+    padding: 0em;
+    border-radius: 0.5em;
+}
+
+:not(pre):not(.hljs) > code {
+    color: hsl(212, 58%, 94%);
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+    font-size: 12px;
+	padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 0;
+    padding-bottom: 0;
+	border-radius: 3px;
+}
