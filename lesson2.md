@@ -2,7 +2,9 @@
 
 These lessons are meant to give you an introduction to Python, not to teach you everything there is about it. Please do your own exploration if you're curious. This can be done through looking at the [official Python tutorials](https://docs.python.org/3/tutorial/index.html), StackOverflow (a community driven QA site for coding), or just through experimentation.
 
+## Lesson Two Contents
 - [Communion: Python Lesson Two](#communion-python-lesson-two)
+  - [Lesson Two Contents](#lesson-two-contents)
   - [Functions/Methods/Definitions](#functionsmethodsdefinitions)
     - [Anatomy of a Function](#anatomy-of-a-function)
     - [The Pieces](#the-pieces)

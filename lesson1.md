@@ -2,26 +2,31 @@
 
 These lessons are meant to give you an introduction to Python, not to teach you everything there is about it. Please do your own exploration if you're curious. This can be done through looking at the [official Python tutorials](https://docs.python.org/3/tutorial/index.html), StackOverflow (a community driven QA site for coding), or just through experimentation.
 
+## Lesson One Contents
 - [Communion: Python Lesson One](#communion-python-lesson-one)
+  - [Lesson One Contents](#lesson-one-contents)
   - [Setting Up Shop](#setting-up-shop)
   - [Anatomy of Hello World](#anatomy-of-hello-world)
-  - [The print Statement](#the-print-statement)
+  - [The `print` Statement](#the-print-statement)
   - [Variables](#variables)
   - [Operators](#operators)
   - [Conditionals](#conditionals)
   - [Loops](#loops)
+  - [End of Lesson Examples](#end-of-lesson-examples)
+    - [Useless Thing](#useless-thing)
+    - [Where to Eat Bracket](#where-to-eat-bracket)
 
 </br>
 
 ## Setting Up Shop
-1. In order to use Python, you need to install it. You can get it [here](https://www.python.org/downloads/). Grab the newest version (at the time of writing is 3.9.4) as I may discuss old ways of doing things, but the newer ways are typically better in terms of security, readability, or otherwise. This installation gives you all of the standard libraries as well as core code to build/run Python scripts.
+1. In order to use Python, you need to install it (unless you use OSX or Linux). You can get it [here](https://www.python.org/downloads/). Grab the newest version (at the time of writing is 3.9.4) as I may discuss old ways of doing things, but the newer ways are typically better in terms of security, readability, or otherwise. This installation gives you all of the standard libraries as well as core code to build/run Python scripts.
 
 2. To write Python scripts, any text editing software can be used, including Notepad and Word, if you want; however, these solutions lack intelligent support/functionality for developers. Instead of using one of these _wonderful_ solutions, install [Visual Studio Code](https://code.visualstudio.com/download). Visual Studio Code (VS Code for short) is an open source integrated development environment (IDE) that has built in functionality for coding, such as syntax highlighting for different coding languages, and community developed extensions which further enhance every aspect of the environment. There are plenty of rudimentary how-tos on the internet to get started with Visual Stuido Code and Python, so I'll leave it to you to find and follow one of those.
 
 </br>
 
 ## Anatomy of Hello World
-The most basic program in any language is `Hello World`. It's essentially just a print statement to your console to show that you have everything set up correctly and that you can get your machine to run the simplest of programs. In Python, it looks like this:
+The most basic program in any language is `Hello World`. It's essentially just a print statement to your console/terminal to show that you have everything set up correctly and that you can get your machine to run the simplest of programs. In Python, it looks like this:
 
 `Python`:
 ```python
@@ -32,10 +37,10 @@ Comparatively, here are a few examples of `Hello World` in a few languages other
 
 1. `C` and `C++`:
 ```c++
-#include <iostream>
+#include <stdio.h>
 
 int main(int argc, char *argv[]) {
-    printf("Hello World");
+    printf("Hello World\r\n");
     return 0;
 }
 ```
@@ -43,7 +48,7 @@ int main(int argc, char *argv[]) {
 `HTML`:
 ```html
 <body>
-<p>Hello World</p>
+    <p>Hello World</p>
 </body>
 ```
 
@@ -56,10 +61,10 @@ Python's implementation may seem trivial, and you would be right. Python was ini
 
 </br>
 
-## The print Statement
+## The `print` Statement
 The print statement is probably the most widely used debugging/feedback tool used in any programming language. In Python, it's simply `print()` with whatever you want to print within the parentheses. The best example is `Hello World` shown above.
 
-In Python, however, the functionality does not end there.
+In Python, however, the functionality does not end there. Here are just a few of the additional features/options afforded by the `print` command:
 - Multiple values: It's possible to print multiple things with a single print statement.
   - example: `print('123', '456')` will print the strings `123` and `456` on the same line, separated by a space.
 - Non-string items: The object passed (the item inside the parentheses), does not need to be a string to print. Instead, the object just needs to define how to be treated when converted to a string (more detail on this upon request and maybe in a later lesson).
@@ -86,52 +91,73 @@ A Variable in Python is a storage container for information that the user may wa
 A valid variable name may contain the following in any permutation:
 * `[a-z]`: lower-case letters
 * `[A-Z]`: upper-case letters
-* `[0-9]`: any number
+* `[0-9]`: any number (can't be first character)
 * `_`: underscore
 
-Variables in Python, unlike other languages such as C and Java, do not need to be declared as a given type. Instead, the Python interpreter guesses (very well, but not perfectly in some cases) at runtime what the variable type is.
+Variables in Python, unlike other languages such as C and Java, do not need to be declared as a given type. Instead, the Python interpreter guesses (very well, but not perfectly in some cases) at runtime what the variable type is. Something's type can be found using `type(<thing>)`.
 
 To define a variable, simply type the desired variable name followed by the assignment operator `=` (operators will be discussed in the next section) and the initial value. The interpreter guesses the type based on this initial value.
 
 For example: `foo = 123` assignes the integer value `123` to a variable named `foo`. Spaces in cases like this are ignored and thus `foo = 123` and `foo=123` are equivalent, but it is considered good practice to use spaces in this regard since it promotes readability.
 
-In addition to the variable name and use, there are many different variable types, but only a few key ones are discussed here:
-* Integer:
+There are many different variable types, but only a few key ones are discussed here:
+* Boolean (`bool`):
+  * A true or false value
+  * Can't be "emtpy". Instead initialize with the value that is meant to be "default" in the given circumstance.
+  * These are critical to program flow as all code relies on logical statements that evaluate to boolean values to direct execution
+  * example: `foo = True`
+  * example: `bar = False`
+* Integer (`int`):
   * As the name implies, integer values.
   * Can't really be "empty." Instead initialize with `0` if no specific value needed.
   * example: `myInteger = 123`
-* Float:
+* Float (`float`):
   * Decimal numbers.
   * Can't really be "empty." Instead initialize with `0` if no specific value needed.
   * example: `myFloat = 1.23` and `myFloat = 1.0`
-* String:
+* String (`str`):
   * A list of characters that form "words". This is actually a pretty terrible way to describe it, but it's _technically_ correct, I suppose.
-  * Strings can be defined with single or double quotes. Note that the quotes can be used as part of the string if the encapsulating quotes are the other or if you use the escape character (discussed in the **other** section). Empty string denoted as `''` or `""`.
+  * Strings can be defined with single or double quotes. Note that the quotes can be used as part of the string if the encapsulating quotes are the other or if you use the escape character (`\`: tells the program to ignore the next character's special properties).
+  * Empty string denoted as `''` or `""`.
   * examples:
     * `myString = 'hi there'`
     * `myString = "hi there"`
     * `myString = 'a string "with quotes"'`
+    * `myString = 'another string \'with quotes\''`
   * Strings can also be manipulated with a number of built in functions.
     * `<string>.upper()` and `<string>.lower()` converts the string (can be string literal or variable) to uppercase and lowercase, respectively.
-      * example: `bar = foo.upper()` - Converts `foo` to all uppercase (where appropriate; integers ignored) and stores the result in `bar`.
+      * example: `bar = 'foo'.upper()` - Converts `foo` to all uppercase (where appropriate; integers ignored) and stores the result in `bar`.
+      * example: `bar = foo.upper()` - Converts string contents of `foo` to all uppercase (where appropriate; integers ignored) and stores the result in `bar`.
     * `<string>.replace(<find_value>, <replace_value>)` finds a substring and replaces it with a replacement string in the given string (can be string literal or variable).
       * example: `bar = foo.replace(' ', '_')` - Finds all spaces in `foo` and replaces them with underscores and stores the result in `bar`.
     * f-strings or formatted strings: these are a way to define a string with variables within the string itself. I believe it's best explained through examples.
       * example: `foobar = f'hi, my name is {myName} and i am {myAge} years old.'` - This generates a string that inputs the predefined variables `myName` and `myAge` in the designated places and stores the resultant string in `foobar`.
       * example: `foobar = 'hi, my name is {} and i am {} years old.'.format(myName, myAge)` - This is effectively the same as the above example but has all the variables stated in the `.format` at the end. Variables are added to the `{}` in respective order. This is the older style and has backward compatibility with `Python3 3.6.x` (when the above example was introduced) and before, I believe. Personally, it's not as readable and I shy away from it wherever possible.
     * `<string>.ljust(<num_chars>, <fill_char>)`, `<string>.rjust(<num_chars>, <fill_char>)`, and `<string>.center(<num_chars>, <fill_char>)` creates a string with a fixed width by justifying the given string or variable (left, right, and center respectively) and filling the remaining space with the given filler character.
-* List:
+* List (`list`):
   * A single variable name container that holds many items.
   * The items do not need to be the same type.
   * Defined using square brackets.
   * Empty list denoted as `[]`.
+  * Can find number of items in a list with `len()`
   * examples:
     * `myList = ['a', 'b', 'c']`
     * `myList = ['a', 1, 2.3]`
+    * `len(['a', 'b', 'c'])` returns `3`
   * Items can be individually accessed through `<var_name>[<index>]`. Indexing in Python starts at 0.
     * example using `foo = ['a', 'b', 'c']`
       * `bar = foo[0]` will assign `'a'` to `bar`
-* Dictionary:
+  * A range of values can be selected with `:`.
+    * example using `foo = ['a', 'b', 'c']`
+      * `bar = foo[0:2]` will assign `['a', 'b']` (index 0 _to_ 2) to `bar`
+      * `bar = foo[1:]` will assign `['b', 'c']` (index 1 _through_ the end) to `bar`
+      * `bar = foo[:2]` will assign `['a', 'b']` (beginning _to_ 2) to `bar`
+  * Lists can be indexed from the right as well using negative numbers
+    * example using `foo = ['a', 'b', 'c']`
+      * `print(foo[-1])` prints `c` to the console
+  * Little more complex example with `foo = ['a', 'b', 'c', 'd', 'e']`
+    * `bar = foo[1:-1]` assigns `['b', 'c', 'd']` to `bar`
+* Dictionary (`dict`):
   * Similar to lists, but instead of just storing items, items are stored with a key.
   * Individual items can be accessed by indexing with the proper key.
   * Defined using squigly braces.
@@ -147,12 +173,15 @@ In addition to the variable name and use, there are many different variable type
 ## Operators
 * `=` - Assign
   * assign right value to left
+  * left side must be assignable (variable)
   * example: `foo = 3` assigns integer 3 to variable `foo`
+  * advanced note: if a variable is being assigned to a variable, the pointer is assigned, not a copy, as everything is passed by reference in Python (this makes sense because everything in Python is a object)
 * `==` - Equivalent
   * returns `True` if both sides have the same value, otherwise `False`
   * example: `1 == (2/2)` returns `True`
   * example: `1 == 1.0` returns `True`
   * example: `1 == '1'` returns `False`
+  *
 * `>` - Greater than
   * returns `True` if left side value greater than right
 * `>=` - Greater than or equal to
@@ -190,7 +219,7 @@ In addition to the variable name and use, there are many different variable type
     * for those of you that don't know modulo, it performs the division of the two numbers and returns the remainder
       * example: `5 % 2` returns `1`
       * example: `12 % 5` returns `2`
-  * the add operator is often overloaded (a fancy word meaning defined in multiple locations for different instances) to operate in fancy ways
+  * the add operator is often overloaded (a fancy word meaning defined in multiple places to operate different in varied circumstances). Here are a few examples of `+` usage:
     * as expected, addition can be performed on integers and floats
     * addition can be performed on strings to merge them
       * example: `'abcd' + 'foobar'` returns `'abcdfoobar'`
@@ -204,7 +233,7 @@ Conditional statements allow the user to make divergent code. Code that does not
 
 Conditionals rely on evaluating logical statements and proceeding based on the boolean results.
 
-Their general construction is `if <logical statement>:`. The executed code-block, should the logical statement hold true, follows the `if` statement on separate indented lines. Note that Python is an indentation based language rather than a braces language (like Java and C++). Anything with the same indentation level will be grouped together in the same code block.
+Their general construction is `if <logical statement>:`. The executed code-block, should the logical statement hold true, follows the `if` statement on separate indented lines. Note that Python is an indentation based language rather than a braces language (like Java and C++). Anything with the same indentation level will be grouped together in the same execution level.
 
 Example:
 ```python
@@ -212,7 +241,7 @@ if 1 == 2:
     print('well, we have a problem here')
 ```
 
-In this example, the `1 == 2` is our logical statement which dictates whether or not the code will evaluate the code within the `if` block.
+In this example, the `1 == 2` is our logical statement which dictates whether or not the code will evaluate the code within the `if` block. Since one will never equal two, we would indeed have a problem if we ever saw this print to our console.
 
 To perform code in the event that the if statement returns `False`, we use `elif` to specify another case to check, or `else` to catch all other cases.
 
@@ -246,7 +275,7 @@ This has the exact same operation as well as being easier to read (and keeping y
 Not to make this more confusing, but the ternary operator can be repeated endlessly in a single line for multiple conditions (much like the `elif`).
 
 ```python
-foobar = 1 if foo == True else 2 if bar == True else 3 ...
+foobar = 1 if foo == True else 2 if bar == True else 3 if ...
 ```
 
 </br>
@@ -254,11 +283,13 @@ foobar = 1 if foo == True else 2 if bar == True else 3 ...
 ## Loops
 There are two main loops to consider that are used in essentially every language (that I can think of): `for` and `while`. Other languages have things like the `do/while` loop and other such variants, but they're essentially the same thing with minor caveats.
 
+Loops allow the code to execute a given piece of code `n` number of times. These two kinds of loops (`for` and `while`) vary in how many times they run and their exit condition.
+
 **The `while` loop**
 * The while loop is perhaps the easier of the two to conceptualize, so we'll start here
 * These are very useful for cases when you are unsure how many times the loop needs to occur, but a clear exit condition can be set.
 * Syntax of the while loop is similar to the `if` statement (without `elif` and `else`) in that it's the word `while` followed by a logical statement.
-* The main difference is that the code block after the `while` statement is executed endlessly until the logical statement no longer holds.
+* When encountering a `while` loop, the logical statement is evaluated. If it's true, the code is executed. Upon finishing the while block, the logical statement is re-evaluated and the while block is executed continually until the logical statement is no longer true.
 * It is easy to create endless loops this way should no code be introduced in the execution block to change the logical statement's outcome.
 
 `while` examples:
@@ -269,19 +300,19 @@ while 1:
 This example will enter an infinite loop, printing `'i think i made a mistake'` forever since the logical statement `1` evaluates to true.
 
 ```python
-success = False
+keepGoing = True
 foo = 0
-while not success:
+while keepGoing:
     print(foo)
     foo += 1
     if foo >= 10:
-        success = True
+        keepGoing = False
 ```
 This example will print the numbers 0 through 9 before exiting.
 
 **The `for` loop**
 * The `for` loop is used when the number of iterations is known, either by the user, or based on some known parameter within the code.
-* While this operation can be achieved with the `while` loop, using a `for` loop eliminates the need to explicity write code to break out of the loop.
+* While this operation can be achieved with the `while` loop, using a `for` loop eliminates the need to explicity write code to break out of the loop and keep track of a counter.
 * Their general construction is `for <iterating variable> in <some list>:`
   * While the right hand side of the `is` is not always a `list`, it suffices for beginners to think as much.
   * If you're interested, a few exceptions are `generator statements` and `iterators`.
@@ -291,7 +322,7 @@ This example will print the numbers 0 through 9 before exiting.
 for foo in ['a', 'b', 'c']:
     print(foo)
 ```
-Here a variable `foo` is taking each value from the right hand list individually and executing the code block with that value.
+Here a variable `foo` is taking each value from the right hand list individually and printing the character to the console.
 
 ```python
 for foo in [1, 2, 3]:
@@ -300,14 +331,67 @@ for foo in [1, 2, 3]:
 ```
 This example is largely the same as the previous one, but shows multiple lines as part of the execution block.
 
+## End of Lesson Examples
+### Useless Thing
 ```python
-bar = ['a', 'b', 1, 2, {}]
+bar = ['a', 'b', 1, 2, {'a': 1}]
 for foo in bar:
-    if type(foo) == str:
-        print(foo.upper())
-    elif type(foo) == int:
-        print(foo * 10)
+    if type(foo) == str or type(foo) == int:
+        print(
+            f'given: {foo}',
+            f'mod:   {foo.upper() if type(foo) == str else foo*10}'
+            sep='\n',
+            end='\n\n'
+        )
     else:
-        print(f'not sure what to do with {foo} ({type(foo)})')
+        print(
+            'not sure what to do with',
+            f'  type:  ({type(foo)})',
+            f'  value: {foo}',
+            sep='\n'
+            end='\n\n'
+        )
 ```
-This is a sligtly more complex example, but all of the pieces have been discussed previously and you should be able to figure out what would happen upon running. If not, try it.
+All of the pieces have been discussed previously and you should be able to figure out what would happen upon running. If not, try it!
+
+### Where to Eat Bracket
+```python
+eateries = [
+    'burger king',
+    'zupas',
+    'olive garden',
+    'costa vida',
+    'panda express',
+    'subway',
+    'indian',
+    'saigon cafe'
+]
+
+if __name__ == '__main__':
+    iterator = 0
+    round_num = 1
+    while(len(eateries) > 1):
+        print(
+            ' RESTAURAUNT SHOWDOWN! '.center(60, '-'),
+            f' round {round_num} '.center(60, '-'),
+            f'1) {eateries[iterator].upper()} vs. 2) {eateries[iterator+1].upper()}',
+            sep = '\n'
+        )
+        # the input command prints out the argument and then waits
+        # for user feedback and returns their response
+        selection = input('  Which do you prefer? ')
+        if selection == '1':
+            del eateries[iterator+1]
+            iterator += 1
+            round_num += 1
+        elif selection == '2':
+            del eateries[iterator]
+            iterator += 1
+            round_num += 1
+
+        if iterator >= len(eateries)-1:
+            iterator = 0
+        print()
+    print(f' Go eat at {eateries[0].upper()}!! '.center(60, '*'))
+    print()
+```
